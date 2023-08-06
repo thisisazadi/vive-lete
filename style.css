@@ -47,7 +47,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
-    
+    grid-auto-flow: dense;
 }
 
 section div.split {
@@ -65,6 +65,7 @@ section div.slides {
     width: 500px;
     height: 750px;
     position: relative;
+    perspective: 800px;
     
 }
 
@@ -78,6 +79,7 @@ section div.slides img {
 }
 
 section div.info {
+    padding: 32px;
     max-width: 480px;
 }
 
@@ -87,5 +89,56 @@ section h2 {
 
 section p {
     margin: 32px 0 0 0;
+}
+
+section a {
+    background-color: #FFFFFF;
+    color: #111111;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 24px 8px 24px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+}
+
+section a img {
+    margin: 0 0 0 8px;
+    width: 10px;
+    height: 16px;
+    object-fit: cover;
+    object-position: center right;
+    transition: width 0.25s;
+}
+
+section a:hover img {
+    width: 25px;
+}
+
+section.alternative div.split:first-child {
+    grid-column: 2;
+}
+
+section.alternative div.split:last-child {
+    grid-column: 1;
+}
+
+
+@media (max-width: 1080px) {
+    section {
+        display: block;
+    }
+
+    section di.split {
+        padding: 64px 0 64px 0;
+    }
+}
+
+@media (max-width: 700px) {
+    section div.slides,
+    section div.slides img {
+        width: 80vw;
+        height: 120vw;
+    }
 }
 

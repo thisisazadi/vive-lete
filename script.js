@@ -12,7 +12,11 @@ images.forEach(image => {
     image.style.zIndex = z
 })
 
-const timeline = gsap.timeline()
+gsap.set(images, { opacity: 0 })
+
+imagesLoaded(images, function () {
+
+    const timeline = gsap.timeline()
 
 timeline
     .set(images, { 
@@ -22,7 +26,8 @@ timeline
         y: "500%",
         rotation: () => {
             return 90 * Math.random() - 45
-        }
+        },
+        opacity: 1
     })
     .to(images, { x: 0, y: 0, stagger: -0.25 })
     .to(images, { 
@@ -30,6 +35,10 @@ timeline
             return 16 * Math.random()
         } 
     })
+
+})
+
+
 
 slide.addEventListener("click", function() {
     z = z - 1
@@ -50,14 +59,18 @@ slide.addEventListener("click", function() {
         .set(currentImage, { x: 0 })
         .to(currentImage, { 
             x: direction,
-            rotation: midAngle
+            rotation: midAngle,
+            rotationY: 90,
+            scale: 1.3
         })
         .set(currentImage, { zIndex: z })
         .to(currentImage, { 
             x: 0,
             rotation: () => {
                 return 16 * Math.random() - 8
-            }
+            },
+            rotationY: 0,
+            scale: 1
         })
 
     
